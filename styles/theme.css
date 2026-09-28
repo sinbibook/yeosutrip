@@ -1,0 +1,34 @@
+/* ============================================================
+   Theme CSS — t-template-G
+   원본: playbeach.kr (동일 계열 대조: 아라마루.kr)
+
+   standalone 은 원본 CSS 값을 그대로 쓰고, 백오피스 preview 에서
+   theme customFields 로 이 토큰들을 덮어쓴다.
+
+   토큰 값은 하나씩만 둔다. 폴백은 사용처에서 붙인다.
+     예) font-family: var(--font-en-main), 'Times New Roman', serif;
+
+   상세 근거(사용처 전수 조사 / 하드코딩으로 남긴 값)는
+   data-mapping.md 의 「테마 색상/폰트」 참고.
+   ============================================================ */
+
+/* Cinzel(영문 대제목) · Noto Serif KR(메뉴·히어로) · Noto Sans KR(본문)
+   Charmonman / Allura(필기체 2종)는 reset.css 가 로드한다 — 토큰 아님 */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&family=Noto+Serif+KR&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
+:root {
+  /* 밝은 바탕 면 6곳 — .main_about / .sub_cate_wrap / 표 헤더·줄무늬 / 지도 자리 */
+  --color-primary: #f5f5f5;
+
+  /* 진한 브랜드 포인트 9곳 — .txt_logo / .main_about 문구 박스 /
+     .about_txt_bnr 오프셋 / 객실 em / 특장점 p / 표 상단선 / 404 버튼
+     ⚠️ 밝은 색으로 바꾸면 파란 박스 위 흰 글자가 사라진다 */
+  --color-secondary: #1d59a1;
+
+  /* 영문 대제목 — .title_box h3, .visual_txt strong, .aside .depth1 */
+  --font-en-main: 'Cinzel';
+  /* 한글 본문 — reset.css 전역 */
+  --font-ko-main: 'Noto Sans KR';
+  /* 메뉴·히어로 세리프 — .hd_lnb, .visual_txt, .ff_noto_serif */
+  --font-ko-sub: 'Noto Serif KR';
+}

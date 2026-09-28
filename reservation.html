@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      html.tpl-loading body {
+        opacity: 0;
+      }
+      body {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add('tpl-loading');
+      window.__tplReveal = function () {
+        document.documentElement.classList.remove('tpl-loading');
+      };
+      setTimeout(function () {
+        window.__tplReveal && window.__tplReveal();
+      }, 3000);
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <title data-page-title>여수 여수트립 펜션 - 예약안내</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" type="text/css" href="styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/popup.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="여수 여수트립 펜션 - 예약안내" />
+  <meta property="og:description" content="여수의 엑스포,낭만포차 주요 관광지 인근에 위치하여 게스트하우스 처럼 편안하게 이용이 가능합니다, 커플 가족 친구 모두 여수에서 힐링하세요" />
+  <meta property="og:image" content="https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/Iz7Kr8ihEU4X.jpg" />
+  <meta property="og:url" content="https://yeosutrip.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="여수 여수트립 펜션 - 예약안내" />
+  <meta name="twitter:description" content="여수의 엑스포,낭만포차 주요 관광지 인근에 위치하여 게스트하우스 처럼 편안하게 이용이 가능합니다, 커플 가족 친구 모두 여수에서 힐링하세요" />
+  <meta name="twitter:image" content="https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/Iz7Kr8ihEU4X.jpg" />
+  <meta name="naver-site-verification" content="6fc1af94d0fe8f9ae31a1faa8ec92e3728194a71" />
+  <meta name="google-site-verification" content="XHsak670fWn434akeGlmPegCYSrMWkAHAobwqZBLcmI" />
+</head>
+
+  <body oncontextmenu="return false;" onselectstart="return false" ondragstart="return false;">
+    <div id="wrap">
+      <div id="header-wrap"></div>
+
+      <div id="container">
+        <section id="content" class="sub4_1 sub_reserve">
+          <!-- 원본은 히어로가 슬라이더가 아니라 고정 배경이다 -->
+          <div class="sub_wide_visual visual" data-reservation-hero>
+            <div class="visual_box">
+              <div class="visual_txt">
+                <div>
+                  <strong>Reservation</strong>
+                  <p data-property-caption="{name} 이용안내"></p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--// sub_visual -->
+
+          <div class="sub_cate_wrap">
+            <div class="inner">
+              <ul>
+                <li><a href="#!" target="_blank" data-booking-link>예약하기</a></li>
+                <li class="on"><a href="./reservation.html">이용안내</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="sub_cont inner">
+            <!-- 매퍼가 dt(제목) + dd(본문) 쌍을 만든다 -->
+            <dl class="info_box" data-reservation-blocks></dl>
+          </div>
+          <!--// sub_cont -->
+        </section>
+      </div>
+      <!--// container -->
+    </div>
+
+    <!-- 푸터는 #wrap(max-width:1920px) 밖에 둔다 — 어두운 배경이 화면 폭을 꽉 채우도록 -->
+    <div id="footer-wrap"></div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/preview-handler.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/data-mapper/pages/reservation-mapper.js"></script>
+    <script src="js/header-footer-loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>

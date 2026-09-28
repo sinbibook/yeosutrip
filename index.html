@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <style>
+      html.tpl-loading body {
+        opacity: 0;
+      }
+      body {
+        opacity: 1;
+        transition: opacity 0.3s ease;
+      }
+    </style>
+    <script>
+      document.documentElement.classList.add('tpl-loading');
+      window.__tplReveal = function () {
+        document.documentElement.classList.remove('tpl-loading');
+      };
+      setTimeout(function () {
+        window.__tplReveal && window.__tplReveal();
+      }, 3000);
+    </script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta property="og:type" content="website" />
+    <title data-page-title>여수 여수트립 펜션 - 홈</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" type="text/css" href="styles/theme.css" />
+    <link rel="stylesheet" type="text/css" href="styles/reset.css" />
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
+    <link rel="stylesheet" type="text/css" href="styles/popup.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"
+    />
+    <!-- Open Graph Meta Tags for Social Media -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="여수 여수트립 펜션 - 홈" />
+  <meta property="og:description" content="여수의 엑스포,낭만포차 주요 관광지 인근에 위치하여 게스트하우스 처럼 편안하게 이용이 가능합니다, 커플 가족 친구 모두 여수에서 힐링하세요" />
+  <meta property="og:image" content="https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/Iz7Kr8ihEU4X.jpg" />
+  <meta property="og:url" content="https://yeosutrip.kr" />
+
+  <!-- Twitter Card Meta Tags -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="여수 여수트립 펜션 - 홈" />
+  <meta name="twitter:description" content="여수의 엑스포,낭만포차 주요 관광지 인근에 위치하여 게스트하우스 처럼 편안하게 이용이 가능합니다, 커플 가족 친구 모두 여수에서 힐링하세요" />
+  <meta name="twitter:image" content="https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/Iz7Kr8ihEU4X.jpg" />
+  <meta name="naver-site-verification" content="6fc1af94d0fe8f9ae31a1faa8ec92e3728194a71" />
+  <meta name="google-site-verification" content="XHsak670fWn434akeGlmPegCYSrMWkAHAobwqZBLcmI" />
+</head>
+
+  <body oncontextmenu="return false;" onselectstart="return false" ondragstart="return false;">
+    <div id="wrap">
+      <div id="header-wrap"></div>
+
+      <div id="container">
+        <section id="content" class="main">
+          <!-- 히어로 비주얼 -->
+          <div class="main_visual visual">
+            <div class="visual_box">
+              <div class="visual_txt">
+                <p data-index-hero-description></p>
+                <strong data-index-hero-title></strong>
+              </div>
+              <div class="visual_control">
+                <div class="swiper-arw swiper-button-prev">←</div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-arw swiper-button-next">→</div>
+              </div>
+              <div class="swiper-container">
+                <div class="swiper-wrapper" data-index-hero-slides></div>
+              </div>
+            </div>
+          </div>
+          <!--// main_visual -->
+
+          <!-- 이미지 배너 1 (좌 세로 / 우 가로) -->
+          <div class="main_bnr main_bnr01 inner" data-index-bnr01>
+            <div class="img01" data-index-bnr01-image1></div>
+            <p>
+              <span data-index-bnr01-title></span>
+              <span class="bnr_desc" data-index-bnr01-description></span>
+            </p>
+            <div class="img02" data-index-bnr01-image2></div>
+            <p class="text_bottom" data-index-bnr01-text-bottom></p>
+          </div>
+          <!--// main_bnr01 -->
+
+          <!-- 이미지 배너 2 (우 세로 / 좌 가로) -->
+          <div class="main_bnr main_bnr02 inner" data-index-bnr02>
+            <div class="img01" data-index-bnr02-image1></div>
+            <p>
+              <span data-index-bnr02-title></span>
+              <span class="bnr_desc" data-index-bnr02-description></span>
+            </p>
+            <div class="img02" data-index-bnr02-image2></div>
+          </div>
+          <!--// main_bnr02 -->
+
+          <!-- 객실 미리보기 -->
+          <div class="main_room inner">
+            <div class="title_box">
+              <h3 data-index-room-title></h3>
+              <p data-index-room-description></p>
+            </div>
+            <div class="room_list">
+              <div class="swiper-container">
+                <div class="swiper-wrapper" data-index-room-slides></div>
+              </div>
+            </div>
+          </div>
+          <!--// main_room -->
+
+          <!-- 숙소 소개 -->
+          <div class="main_about">
+            <div class="inner">
+              <div class="img_box">
+                <div class="swiper-container">
+                  <div class="swiper-wrapper" data-index-about-slides></div>
+                </div>
+              </div>
+              <div class="txt_box">
+                <div>
+                  <strong data-index-about-title></strong>
+                  <p data-index-about-description></p>
+                  <a href="./main.html">펜션소개 보러가기</a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--// main_about -->
+
+          <!-- 예약 유도 문구 (원본 .main_reserve) -->
+          <div class="main_reserve" data-index-reserve>
+            <div>
+              <strong data-index-reserve-title></strong>
+              <p data-index-reserve-description></p>
+              <div data-index-reserve-button>
+                <a href="#!" target="_blank" data-booking-link>예약하기</a>
+              </div>
+            </div>
+          </div>
+          <!--// main_reserve -->
+
+          <!-- 부대시설 특장점 -->
+          <div class="main_special inner" data-index-special>
+            <div class="title_box">
+              <h3 data-index-special-title></h3>
+              <p data-index-special-description></p>
+            </div>
+            <ul data-index-special-list></ul>
+          </div>
+          <!--// main_special -->
+
+          <!-- 마무리 문구 -->
+          <div class="main_wide_bg" data-index-closing>
+            <div class="txt_box">
+              <div>
+                <strong data-index-closing-title></strong>
+                <p data-index-closing-description></p>
+              </div>
+            </div>
+          </div>
+          <!--// main_wide_bg -->
+        </section>
+      </div>
+      <!--// container -->
+    </div>
+
+    <!-- 푸터는 #wrap(max-width:1920px) 밖에 둔다 — 어두운 배경이 화면 폭을 꽉 채우도록 -->
+    <div id="footer-wrap"></div>
+
+    <div id="popup-container"></div>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+    <script src="js/image-helpers.js"></script>
+    <script src="js/preview-handler.js"></script>
+    <script src="js/data-mapper/core/base-mapper.js"></script>
+    <script src="js/data-mapper/pages/header-footer-mapper.js"></script>
+    <script src="js/data-mapper/pages/index-mapper.js"></script>
+    <script src="js/header-footer-loader.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/pages/index.js"></script>
+    <script src="js/popup.js"></script>
+  </body>
+</html>
