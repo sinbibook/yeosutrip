@@ -38,11 +38,10 @@
 /* Content box (fourseason .mh_layer_popup: 흰 배경 / 10px 패딩 / 얇은 보더 / 라운드·그림자 없음) */
 .popup-content {
   position: relative;
-  /* 폭 고정 없음 → 이미지 원본 크기/비율 그대로 노출 (잘림·축소 방지)
-       고정 상한(700px) 제거: 이미지 원본 폭이 700px를 넘어도 뷰포트(90vw) 안에서는 원본 크기로 보인다 */
+  /* 폭 고정 없음 → 이미지 원본 비율대로 늘어남 (잘림 방지). 가로 상한은 380px */
   width: auto;
   min-width: 300px;
-  max-width: 90vw;
+  max-width: min(90vw, 380px);
   max-height: 90vh;
   background: #fff;
   padding: 10px;
