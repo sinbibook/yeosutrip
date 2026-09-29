@@ -476,7 +476,7 @@ if (typeof window.PopupManager === 'undefined') {
   }
 
   // 팝업 박스 최대 가로폭 (styles/popup.css .popup-content max-width 와 동일하게 유지)
-  PopupManager.MAX_BOX_WIDTH = 700;
+  PopupManager.MAX_BOX_WIDTH = 380;
 
   // 전역 인스턴스 생성
   window.PopupManager = PopupManager;
