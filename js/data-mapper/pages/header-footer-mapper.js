@@ -37,6 +37,7 @@
     this.mapBookingLinks();
     this.mapYbs();
     this.mapConsult();
+    this.mapSocialLinks();
     this.mapRoomMenu();
     this.mapSpecialMenu();
     this.mapPageToggles();
@@ -185,6 +186,49 @@
         target.setAttribute('target', '_blank');
       }
     });
+  };
+
+  // 소셜 링크 플랫폼 — [data-homepage-socialLinks-{platform}] 와 1:1.
+  // 헤더 네이버 버튼은 blog 칸을 쓴다(어드민에서 네이버 플레이스 주소를 blog 에 입력).
+  var SOCIAL_PLATFORMS = ['facebook', 'instagram', 'blog', 'youtube'];
+
+  // MAPPER: homepage.socialLinks.{platform} → [data-homepage-socialLinks-{platform}] (href, 없으면 숨김)
+  //
+  // 마크업 기본 상태가 숨김이라(깜빡임 방지) 값이 있을 때만 노출한다. 값이 null·빈 문자열·공백·키 없음이면 숨긴다.
+  // 링크를 감싼 래퍼([data-social-wrap] — 헤더 .hd_right 의 .hd_sns, aside 맨 아래 .aside_sns)는
+  // 보이는 링크가 하나도 없으면 래퍼째 숨겨 빈 칸·여백이 남지 않게 한다.
+  // 마크업이 없는 플랫폼(facebook / youtube)은 매칭 요소가 0개라 아무 일도 하지 않는다.
+  // 버튼이 하나라도 보이면 루트에 data-social="on" 을 찍는다 — 레이아웃 보정 CSS 의 기준
+  // (:has 대신 — 일부 브라우저에서 스타일 미반영).
+  HeaderFooterMapper.prototype.mapSocialLinks = function () {
+    var socialLinks = this.getHomepage().socialLinks || {};
+    var anyOn = false;
+    SOCIAL_PLATFORMS.forEach(function (platform) {
+      var url = consultText(socialLinks[platform]);
+      document
+        .querySelectorAll('[data-homepage-socialLinks-' + platform + ']')
+        .forEach(function (el) {
+          if (!url) {
+            el.style.display = 'none';
+            el.setAttribute('href', '#!');
+            el.removeAttribute('target');
+            el.removeAttribute('rel');
+            return;
+          }
+          el.setAttribute('href', url);
+          el.setAttribute('target', '_blank');
+          el.setAttribute('rel', 'noopener');
+          el.style.display = '';
+          anyOn = true;
+        });
+    });
+    document.querySelectorAll('[data-social-wrap]').forEach(function (wrap) {
+      var shown = Array.prototype.some.call(wrap.querySelectorAll('a'), function (a) {
+        return a.style.display !== 'none';
+      });
+      wrap.style.display = shown ? '' : 'none';
+    });
+    document.documentElement.setAttribute('data-social', anyOn ? 'on' : 'off');
   };
 
   // MAPPER: roomtypes[].name → [data-rooms-submenu] (미리보기 li 뒤에 동적 생성, PC + 모바일 aside)

@@ -1,5 +1,7 @@
+<!-- 레이아웃은 pensionmaru.kr 푸터를 따른다 (흰 배경 + 가운데 정렬 한 줄 흐름).
+     원본처럼 개인정보처리방침은 .address 줄 끝에, 카피라이트는 .footer 밖에 둔다. -->
 <div class="footer_wrap">
-  <div class="footer inner">
+  <div class="footer">
     <div class="tel">
       <a href="tel:" data-footer-phone-link>
         T.
@@ -12,6 +14,7 @@
         업체명 :
         <span data-footer-business-name></span>
       </p>
+      <br class="for_m" />
       <p>
         대표자 :
         <span data-footer-representative></span>
@@ -20,8 +23,6 @@
         사업자번호 :
         <span data-footer-business-number></span>
       </p>
-    </div>
-    <div class="copy">
       <a
         href="http://design.trip11.net/privacy/privacy_policy.html"
         class="privacy"
@@ -29,10 +30,13 @@
       >
         개인정보처리방침
       </a>
-      <a href="http://trip11.kr/" target="_blank" data-copyright="COPYRIGHT©{provider}. ALL RIGHTS RESERVED.">COPYRIGHT©(주)트립일레븐. ALL RIGHTS RESERVED.</a>
     </div>
+  </div>
+  <div class="copy">
+    <a href="http://trip11.kr/" target="_blank" data-copyright="COPYRIGHT©{provider}. ALL RIGHTS RESERVED.">COPYRIGHT©(주)트립일레븐. ALL RIGHTS RESERVED.</a>
+  </div>
 
-    <!-- 우측 하단 플로팅 버튼 2개. 상담하기(아래) + 예약하기(위) 순으로 쌓인다.
+  <!-- 우측 하단 플로팅 버튼 2개. 상담하기(아래) + 예약하기(위) 순으로 쌓인다.
      예약하기는 `for_m` 이라 모바일에서만 뜨고, 상담하기는 총판A + tripPropertyId 가
      있을 때 전 화면폭에서 뜬다 (header-footer-mapper.mapConsult). -->
 
@@ -49,6 +53,5 @@
   <a title="예약하기" href="#!" target="_blank" data-booking-link>
     <img src="images/common/talk.png" alt="예약하기" />
   </a>
-</div>
 </div>
 </div>

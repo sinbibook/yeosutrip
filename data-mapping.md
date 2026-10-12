@@ -385,7 +385,7 @@ E2 도 같은 처리를 해 뒀다. 스타일 규칙은 **494개 전부 이식�
 
 ```
 .header
-├ .hd_inner   — .logo / .hd_right(예약·YBS·모바일 메뉴) / .btn_toggle
+├ .hd_inner   — .logo / .hd_right(네이버·인스타·예약·YBS·모바일 메뉴) / .btn_toggle
 ├ .hd_lnb     — .txt_logo / ul.depth1 / .btn_lnb_close
 └ .aside      — 모바일 슬라이드 메뉴
 ```
@@ -395,16 +395,37 @@ E2 도 같은 처리를 해 뒀다. 스타일 규칙은 **494개 전부 이식�
 
 `header-footer-mapper.js` 는 E2 것을 **수정 없이 그대로 쓴다** (템플릿 공용, 원본 종속 없음).
 
-| `data-*`                            | 요소                                             | JSON 경로                                      | 폴백 / 비고                                                                    |
-| ----------------------------------- | ------------------------------------------------ | ---------------------------------------------- | ------------------------------------------------------------------------------ |
-| `data-logo-image`                   | `.logo img`                                      | `homepage.images[0].logo[isSelected].url`      | 없으면 `img` 숨기고 `.logo_text` 노출 → 그것도 없으면 placeholder              |
-| `data-property-name`                | `.logo .logo_text`, `.hd_lnb .txt_logo a`        | `customFields.property.name` → `property.name` |                                                                                |
-| `data-rooms-submenu`                | ROOMS `.depth_box` / aside `.depth_list`         | `customFields.roomtypes[]`                     | `미리보기` li 뒤에 `data-generated="room"` 으로 추가                           |
-| `data-special-submenu`              | SPECIAL `.depth_box` / aside `.depth_list`       | `property.facilities[]`                        | 컨테이너를 비우고 전량 생성                                                    |
-| `data-booking-link`                 | 헤더 예약 버튼 / RESERVE `depth1_a` / `예약하기` | `property.realtimeBookingId`                   | URL 형태일 때만 `href` 주입, 아니면 `#!` 유지                                  |
-| `data-ybs-button` / `data-ybs-wrap` | `.btn_reserve` (감싼 `span.ybs_wrap`)            | `property.ybsId`                               | 없으면 `span` 째 숨김. 링크는 `https://www.yapen.co.kr/external?ypIdx={ybsId}` |
-| `data-menu-id="layout-map"`         | ROOMS `미리보기` li                              | `pages.layoutMap.sections[0].enabled`          | `false` 면 li 숨김                                                             |
-| `data-travel-menu`                  | TRAVEL `li` / aside 블록                         | `pages.nearbyAttractions.sections[0].enabled`  | `false` 면 숨김                                                                |
+| `data-*`                              | 요소                                             | JSON 경로                                      | 폴백 / 비고                                                                            |
+| ------------------------------------- | ------------------------------------------------ | ---------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `data-logo-image`                     | `.logo img`                                      | `homepage.images[0].logo[isSelected].url`      | 없으면 `img` 숨기고 `.logo_text` 노출 → 그것도 없으면 placeholder                      |
+| `data-property-name`                  | `.logo .logo_text`, `.hd_lnb .txt_logo a`        | `customFields.property.name` → `property.name` |                                                                                        |
+| `data-rooms-submenu`                  | ROOMS `.depth_box` / aside `.depth_list`         | `customFields.roomtypes[]`                     | `미리보기` li 뒤에 `data-generated="room"` 으로 추가                                   |
+| `data-special-submenu`                | SPECIAL `.depth_box` / aside `.depth_list`       | `property.facilities[]`                        | 컨테이너를 비우고 전량 생성                                                            |
+| `data-booking-link`                   | 헤더 예약 버튼 / RESERVE `depth1_a` / `예약하기` | `property.realtimeBookingId`                   | URL 형태일 때만 `href` 주입, 아니면 `#!` 유지                                          |
+| `data-ybs-button` / `data-ybs-wrap`   | `.btn_reserve` (감싼 `span.ybs_wrap`)            | `property.ybsId`                               | 없으면 `span` 째 숨김. 링크는 `https://www.yapen.co.kr/external?ypIdx={ybsId}`         |
+| `data-menu-id="layout-map"`           | ROOMS `미리보기` li                              | `pages.layoutMap.sections[0].enabled`          | `false` 면 li 숨김                                                                     |
+| `data-travel-menu`                    | TRAVEL `li` / aside 블록                         | `pages.nearbyAttractions.sections[0].enabled`  | `false` 면 숨김                                                                        |
+| `data-homepage-socialLinks-blog`      | 헤더 `.hd_sns` / aside `.aside_sns` 네이버 버튼  | `homepage.socialLinks.blog`                    | 없으면(null·빈 문자열·공백·키 없음) 숨김. 둘 다 없으면 래퍼(`data-social-wrap`)째 숨김 |
+| `data-homepage-socialLinks-instagram` | 헤더 `.hd_sns` / aside `.aside_sns` 인스타 버튼  | `homepage.socialLinks.instagram`               | 위와 같음                                                                              |
+
+### 네이버·인스타그램 버튼 (`socialLinks`)
+
+기준 사이트(grangnarang · kalcamping · kia-ora · playbeach) 헤더에는 없는 버튼이라 다른 템플릿과 같은
+"예약하기 앞" 규칙으로 넣었다. 네이버는 어드민 **blog** 칸(네이버 플레이스 주소)을, 인스타그램은 **instagram** 칸을 쓴다.
+
+- **540px 이상**: `.hd_right` 맨 앞 `[N][인스타] 예약하기 YBS ☰`. 예약하기의 특가 배지(`.res_ico`)가 왼쪽으로 10px
+  튀어나와 있어 묶음과 예약하기 사이를 18px 띄운다. 아이콘 32px(≥1024) / 30px(≤1023) / 26px(≤860), 아이콘 사이 8px(≤860 6px).
+  인스타 로고(122×126)는 높이만 고정하고 폭은 비율대로(`width:auto`).
+- **539px 이하**: 헤더 줄에 자리가 없어(YBS 가 꺼진 사이트도 헤더가 두 줄로 늘어난다) 헤더에서는 숨기고
+  **aside 맨 아래**(LOCATION 아래 구분선 + 30px 아이콘 2개)에 보인다.
+- PC 에서는 투명한 `.btn_toggle` 이 로고 오른쪽 헤더 전체를 덮으므로 `.hd_sns` 에 `position:relative; z-index:1`
+  을 줘야 클릭된다(예약하기와 같은 처리).
+- LNB 가 열린 `.header.on` 상태에서는 `.hd_inner` 와 함께 사라진다(예약·YBS 와 같음).
+- 마크업은 링크·래퍼 모두 `style="display: none"` 으로 시작하고 `mapSocialLinks()` 가 값이 있을 때만 `href`
+  (`target=_blank rel=noopener`)를 넣고 노출한다. 매퍼는 `facebook / instagram / blog / youtube` 4종을 처리하고
+  G형 마크업은 blog·instagram 두 개다. 버튼이 하나라도 보이면 루트에 `data-social="on"`, 아니면 `"off"`.
+- 어드민 프리뷰 `section_update` 의 `section === 'socialLinks'` 는 `pages[page].sections[0]` 이 아니라
+  `homepage.socialLinks` 에 반영하고 헤더 버튼만 다시 매핑한다(`handleSocialLinksUpdate`).
 
 ### 서브메뉴 (`.depth_box`)
 
@@ -610,8 +631,7 @@ gallery : title = "Preview"         / description = 빈 값
   <div class="img_box"><!-- 배경 이미지 --></div>
   <div class="txt_box">
     <strong>{시설명}</strong>
-    <p>{시설 설명}</p>
-    <!-- CSS 가 앞에 '-' 를 붙이는 브랜드색 소개 줄 -->
+    <!-- 원본의 p(설명 줄)는 템플릿에서 만들지 않는다 -->
   </div>
 </li>
 ```
@@ -626,22 +646,14 @@ gallery : title = "Preview"         / description = 빈 값
 facilities[i] = { id, name, description, usageGuide, displayOrder, images }
 ```
 
-그래서 **한글 시설명을 제목 자리에 올리고** 원본의 정보 위계(큰 제목 + 소개 줄)를 지킨다.
+그래서 **한글 시설명을 제목 자리에 올린다.**
 `strong` 서체는 로드하지 않는 `PT Serif` 대신 `--font-ko-sub`(Noto Serif KR)로 바꿔
 세리프 느낌을 유지하면서 한글이 제대로 나오게 했다. — 템플릿 확장
 
-**설명은 `nl2br` 로 넣는다.** `description` 은 작성자가 줄바꿈까지 넣어 두는 값이다.
-
-```
-"잔잔하게 흐르는 강을 바라보며\n편안한 쉼의 순간을 느껴보세요."
-```
-
-그대로 흘리면 `\n` 이 무시되고 칸 폭에 맞춰 제멋대로 접혀 세 줄이 된다.
-다만 길이가 제각각이라(한 줄짜리부터 두 문장짜리까지) 카드마다 `.txt_box` 높이가
-어긋나므로 **`-webkit-line-clamp:2` 로 두 줄에서 자른다.** — 템플릿 확장
-
-설명이 비면 `p` 를 만들지 않는다. CSS 가 `:before` 로 `-` 를 붙이기 때문에
-빈 `p` 를 남기면 `-` 만 덩그러니 뜬다.
+**시설명만 넣고 시설 설명(`description`)은 넣지 않는다.** — 템플릿 확장
+설명은 길이가 제각각이라(한 줄짜리부터 두 문장짜리까지) 카드 아래가 들쭉날쭉해지고,
+메인에서는 카드 제목만으로 충분하다. 설명은 카드를 눌러 들어가는 `facility.html` 이 보여준다.
+그래서 원본의 `p`(브랜드색 `-` 소개 줄)는 만들지 않는다.
 
 **카드는 최대 3개다.** 원본은 부대시설 9개 중 3개를 손으로 골라 한 줄(`31.3%` × 3)로 배치한다.
 데이터로는 그 큐레이션을 재현할 수 없어 `displayOrder` 앞에서부터 한 줄치만 쓴다.
@@ -662,22 +674,20 @@ CSS 가 가운데로 모은다 (1개 → 60%, 2개 → 48%). — 템플릿 확�
 
 **`.main_special` 은 Swiper 가 아니다.** 원본이 정적 그리드라 초기화 대상이 없다.
 
-#### 객실 슬라이더 열 수 — playbeach 기준 2열
+#### 객실 슬라이더 열 수 — 펜션마루 기준 PC 3열
 
-두 원본의 `swiper2` 설정을 비교하면 **1200px 이하는 완전히 같고 PC 열 수만 갈린다.**
+원본들의 `swiper2` 설정을 비교하면 **1200px 이하는 완전히 같고 PC 열 수만 갈린다.**
 
-|            | playbeach (정본) | 아라마루         |
-| ---------- | ---------------- | ---------------- |
-| PC 열 수   | **2**            | 3                |
-| `loop`     | `true`           | `false`          |
-| `autoplay` | 없음             | `autoplay: true` |
-| 861~1200px | 2열              | 2열              |
-| 479~860px  | 2열              | 2열              |
-| 280~478px  | 1열              | 1열              |
-| 객실 수    | 4실              | 7실              |
+|            | playbeach        | 아라마루         | 펜션마루 (정본)  |
+| ---------- | ---------------- | ---------------- | ---------------- |
+| PC 열 수   | 2                | 3                | **3**            |
+| `loop`     | `true`           | `false`          | `false`          |
+| `autoplay` | 없음             | `autoplay: true` | `autoplay: true` |
+| 861~1200px | 2열              | 2열              | 2열              |
+| 479~860px  | 2열              | 2열              | 2열              |
+| 280~478px  | 1열              | 1열              | 1열              |
 
-열 수가 객실 수를 따라간 손튜닝이라(4실↔2열 / 7실↔3열) 데이터로는 재현할 수 없다.
-정본인 playbeach 를 따라 **최대 2열**로 고정한다.
+펜션마루(pensionmaru.kr)를 따라 **PC 최대 3열**로 둔다.
 
 객실이 열 수보다 적으면 빈 칸이 생기므로 `TplSwiper.initRoomList()` 가 개수만큼만 배치한다.
 
@@ -685,7 +695,8 @@ CSS 가 가운데로 모은다 (1개 → 60%, 2개 → 48%). — 템플릿 확�
 | ------- | --- | ---- | ---- | ------ |
 | 1       | 1   | 1    | 1    | off    |
 | 2       | 2   | 2    | 1    | off    |
-| 3 이상  | 2   | 2    | 1    | on     |
+| 3       | 3   | 2    | 1    | off    |
+| 4 이상  | 3   | 2    | 1    | on     |
 
 **autoplay 는 원본에 없지만 켠다.** 화살표를 뺐더니 "넘길 수 있다"는 신호가 사라져서,
 슬라이드가 스스로 움직여 그 역할을 대신하게 했다.
@@ -879,7 +890,7 @@ A / B / C 템플릿과 같은 패턴이다. 헤더의 `미리보기` li 도 `hea
 
 | 키           | 대상                           | 옵션                                                                            |
 | ------------ | ------------------------------ | ------------------------------------------------------------------------------- |
-| `layoutRoom` | `.room_list .swiper-container` | `TplSwiper.initRoomList()` — index 와 동일(최대 2열, autoplay 4초, 화살표 없음) |
+| `layoutRoom` | `.room_list .swiper-container` | `TplSwiper.initRoomList()` — index 와 동일(PC 최대 3열, autoplay 4초, 화살표 없음) |
 
 히어로는 고정 배경이라 Swiper 가 없다.
 

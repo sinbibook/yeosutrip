@@ -271,17 +271,11 @@
   // MAPPER: property.facilities[0..2] → .main_special ul
   //
   // 원본 카드 구조는 base 의 renderSpecialCards(li > a + .img > img + strong + p)와
-  // 달라서(li > a + .img_box[배경] + .txt_box > strong + p) 여기서 직접 만든다.
-  //   strong : 시설명
-  //   p      : 시설 설명 (CSS 가 앞에 '-' 를 붙이는 브랜드색 소개 줄)
+  // 달라서(li > a + .img_box[배경] + .txt_box > strong) 여기서 직접 만든다.
   //
-  // 원본은 strong 이 영문 카피(Close To The Beach), p 가 한글 한 줄 소개다.
-  // facilities[] 스키마에 영문명 필드가 없어 영문 카피를 만들 소스가 없으므로
-  // 한글 시설명을 제목 자리에 올리고, 원본의 정보 위계(큰 제목 + 소개 줄)를 지킨다.
-  //
-  // description 은 '잔잔하게 흐르는 강을 바라보며\n편안한 쉼의 순간을 느껴보세요.'
-  // 처럼 작성자가 줄바꿈까지 넣어 두는 값이라 nl2br 로 살린다.
-  // 그대로 흘리면 칸 폭에 맞춰 제멋대로 접혀 세 줄이 된다.
+  // **시설명(strong)만 넣는다.** 시설 설명(description)은 문장 길이가 제각각이라
+  // 카드 아래가 들쭉날쭉해지고, 메인에서는 카드 제목만으로 충분하다.
+  // 설명은 카드를 눌러 들어가는 facility.html 이 보여준다.
   //
   // 카드가 1~2개면 남는 칸이 생기므로 ul 에 data-count 를 내보내 CSS 가 가운데로 모은다.
   IndexMapper.prototype.mapSpecialList = function () {
@@ -299,7 +293,6 @@
       items.push({
         id: f.id,
         name: name,
-        desc: self.cleanText(f.description),
         url: self.getFirstSelectedImage(f.images || [])
       });
     });
@@ -329,14 +322,6 @@
       var strong = document.createElement('strong');
       strong.textContent = item.name;
       txtBox.appendChild(strong);
-
-      // 설명은 백오피스에서 비워 두는 경우가 흔하다. 있을 때만 줄을 만든다
-      // (CSS 가 :before 로 '-' 를 붙이므로 빈 p 를 남기면 '-' 만 뜬다).
-      if (item.desc) {
-        var p = document.createElement('p');
-        p.innerHTML = self.nl2br(item.desc);
-        txtBox.appendChild(p);
-      }
 
       li.appendChild(link);
       li.appendChild(imgBox);

@@ -107,7 +107,13 @@ if (typeof window.PreviewHandler === 'undefined') {
           this.handlePageNavigation(event.data);
           break;
         case 'section_update':
-          await this.handleSectionUpdate(data);
+          // socialLinks 는 페이지 섹션이 아니라 homepage.socialLinks(전 페이지 공통 헤더) 값이다.
+          // 루트에 병합하지 않고 별도 처리한다. 다른 섹션은 기존 동작 그대로.
+          if (event.data.section === 'socialLinks') {
+            await this.handleSocialLinksUpdate(data);
+          } else {
+            await this.handleSectionUpdate(data);
+          }
           break;
         case 'THEME_UPDATE':
           this.handleThemeUpdate(data);
@@ -190,6 +196,33 @@ if (typeof window.PreviewHandler === 'undefined') {
       this.currentData = this.mergeData(this.currentData, data);
       await this.renderTemplate(this.currentData);
       this.refreshPopupFromTemplate(this.currentData);
+      this.notifyRenderComplete('SECTION_UPDATE_COMPLETE');
+    }
+
+    // section_update(section: 'socialLinks') — data 는 { facebook, instagram, blog, youtube }.
+    // homepage.socialLinks 에 반영한 뒤 헤더 소셜 버튼만 다시 매핑한다(페이지 전체 재렌더 없음, pages 오염 없음).
+    async handleSocialLinksUpdate(data) {
+      this.adminDataReceived = true;
+
+      if (this.fallbackTimeout) {
+        clearTimeout(this.fallbackTimeout);
+        this.fallbackTimeout = null;
+      }
+
+      if (!this.isInitialized) {
+        return;
+      }
+
+      if (!this.currentData.homepage) this.currentData.homepage = {};
+      this.currentData.homepage.socialLinks = data || {};
+
+      await this.waitForHeaderDOM();
+      if (window.HeaderFooterMapper) {
+        const headerFooterMapper = new window.HeaderFooterMapper();
+        headerFooterMapper.data = this.currentData;
+        headerFooterMapper.isDataLoaded = true;
+        headerFooterMapper.mapSocialLinks();
+      }
       this.notifyRenderComplete('SECTION_UPDATE_COMPLETE');
     }
 

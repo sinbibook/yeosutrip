@@ -168,15 +168,15 @@ window.TplSwiper = (function () {
   // 객실 카드 목록 공용 초기화 — index / layout-map 이 같은 규격을 쓴다.
   //
   // 원본 custom.js 의 swiper2 breakpoints 를 그대로 따른다.
-  //   playbeach : slidesPerView 2 (PC) / loop true  / autoplay 없음   — 4실
-  //   아라마루  : slidesPerView 3 (PC) / loop false / autoplay 있음   — 7실
+  //   playbeach        : slidesPerView 2 (PC) / loop true  / autoplay 없음
+  //   아라마루·펜션마루 : slidesPerView 3 (PC) / loop false / autoplay 있음
   //
-  // 1200px 이하는 두 사이트가 동일하고 PC 열 수만 갈린다.
-  // playbeach 를 정본으로 삼아 최대 2열로 간다.
+  // 1200px 이하는 세 사이트가 동일하고 PC 열 수만 갈린다.
+  // 펜션마루(pensionmaru.kr)를 따라 PC 최대 3열로 간다 (861~1200px 은 2열).
   //
   // 객실이 열 수보다 적으면 빈 칸이 생기므로 개수만큼만 배치한다
   // (객실 1개 → 1열 전체 폭). loop 도 넘길 게 있을 때만 켠다.
-  var ROOM_MAX_COLS = 2;
+  var ROOM_MAX_COLS = 3;
 
   function initRoomList(key, selector, extra) {
     var el = document.querySelector(selector);
