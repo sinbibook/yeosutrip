@@ -28,7 +28,7 @@ window.initIndexSwipers = function () {
   });
 
   // 객실 미리보기 — 원본 custom.js 의 swiper2.
-  // initRoomList 가 playbeach breakpoints(최대 2열)로 열 수와 loop 를 정한다.
+  // initRoomList 가 펜션마루 breakpoints(PC 최대 3열)로 열 수와 loop 를 정한다.
   //
   // 화살표를 붙이지 않는다. playbeach / 아라마루 둘 다 .main_room 에 .arw 마크업이 없고
   // 드래그(grabCursor)로만 넘긴다. style.css 의 .main_room .arw 규칙은 공용 원본 시트에

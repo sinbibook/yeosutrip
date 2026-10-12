@@ -1,7 +1,7 @@
 {
   "metadata": {
-    "version": "1.4.0",
-    "generatedAt": "2026-09-29T06:35:05.277847485Z",
+    "version": "1.5.0",
+    "generatedAt": "2026-10-12T00:48:23.889330413Z",
     "templateType": "trip_g",
     "propertyId": "8274a9c6-25c0-4b0e-9482-1cfb067c9e1f",
     "homepageId": "01a0e71f-b65e-7e2c-9450-2d8b92d5891c"
@@ -22,7 +22,7 @@
     "checkin": "15:00",
     "checkout": "11:00",
     "checkInOutInfo": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 22시 00분\n※ 22시 이후 입실 시 사전 연락 필수",
-    "usageGuide": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 22시 00분\n※ 22시 이후 입실 시 사전 연락 필수\n\n[인원추가정보]\n[연령기준]\n- 성인: 8세 이상\n- 아동: 24개월 이상~8세 미만\n- 유아: 24개월 미만\n\n[추가 요금]\n- 전객실\n- 요금: 성인 1인 10,000원, 아동 1인 10,000원, 유아 무료\n(1박기준)\n※ 24개월 미만은 별도의 추가비용은 없으나, 인원수에는 포함됩니다.\n\n[편의 및 주변 시설]\n- 102호, 201호, 203호 객실 취사 가능 (인덕션, 세탁기, 주방용품 구비)\n- 펜션 도보 1분 거리 GS 편의점\n- 펜션 도보 1분 거리 이마트 편의점\n- 펜션에서 차량 12분 거리에 만성리 검은 모래 해변이 있음\n- OTT 이용 불가\n- 와이파이 보유\n- 엘레베이터 미보유\n\n[주차장]\n- 전기차 충전기 이용 가능\n※ 도보 3분 거리\n\n[교통편]\n- 여수시 공화북 5길 5\n- 여수 여수여행펜션을 검색 해주세요.\n\n[버스 이용시]\n- 서울특별시  센트럴시티터미널  여수종합버스터미널(직항)  시외버스터미널  버스109(우두새마을금고.지장대사입구.월암)성두입구  장미아파트  현암도서관(잉구부3골목)  중앙여고  성학맨션건너  덕충주공아파트건너  장미미용실건너  여수동초등학교  여수여행펜션 (전라남도 여수시 공화동 공화북5길 5)\n\n[기차 이용시]\n- 서울특별시  용산역  여수EXPO역  여수여행펜션 (전라남도 여수시 공화동 공화북5길 5)",
+    "usageGuide": "[입퇴실안내]\n- 입실: 15시 00분\n- 퇴실: 11시 00분\n- 입실 마감시간: 22시 00분\n※ 22시 이후 입실 시 사전 연락 필수\n\n[인원추가정보]\n[연령기준]\n- 성인: 8세 이상\n- 아동: 24개월 이상~8세 미만\n- 유아: 24개월 미만\n\n[추가요금]\n- 결제방법: 선결제\n※ 24개월 미만은 별도의 추가비용은 없으나, 인원수에는 포함됩니다.\n\n[편의 및 주변 시설]\n- 102호, 201호, 203호 객실 취사 가능 (인덕션, 세탁기, 주방용품 구비)\n- 펜션 도보 1분 거리 GS 편의점\n- 펜션 도보 1분 거리 이마트 편의점\n- 펜션에서 차량 12분 거리에 만성리 검은 모래 해변이 있음\n- OTT 이용 불가\n- 와이파이 보유\n- 엘레베이터 미보유\n\n[주차장]\n- 전기차 충전기 이용 가능\n※ 도보 3분 거리\n\n[교통편]\n- 여수시 공화북 5길 5\n- 여수 여수여행펜션을 검색 해주세요.\n\n[버스 이용시]\n- 서울특별시  센트럴시티터미널  여수종합버스터미널(직항)  시외버스터미널  버스109(우두새마을금고.지장대사입구.월암)성두입구  장미아파트  현암도서관(잉구부3골목)  중앙여고  성학맨션건너  덕충주공아파트건너  장미미용실건너  여수동초등학교  여수여행펜션 (전라남도 여수시 공화동 공화북5길 5)\n\n[기차 이용시]\n- 서울특별시  용산역  여수EXPO역  여수여행펜션 (전라남도 여수시 공화동 공화북5길 5)",
     "reservationGuide": "",
     "province": "도/시",
     "city": "시/군/구",
@@ -217,7 +217,7 @@
           {
             "id": "f7dba38a-6498-4401-a06c-b0dafa612468",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/Iz7Kr8ihEU4X.jpg",
-            "sortOrder": 0,
+            "sortOrder": 1,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -227,7 +227,7 @@
           {
             "id": "acaf87ca-788e-405b-8fe2-6b1f80a397a0",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/bgIMYtCGZXAN.jpg",
-            "sortOrder": 0,
+            "sortOrder": 2,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -235,7 +235,7 @@
           {
             "id": "ff8b7a6a-67f2-4687-801b-9ce8cb683a1d",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/UVTitk15hvNm.jpg",
-            "sortOrder": 1,
+            "sortOrder": 3,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -243,7 +243,7 @@
           {
             "id": "1b38e10c-b946-4798-9f8f-2b888da670ea",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/AdVnX8hofOWZ.jpg",
-            "sortOrder": 2,
+            "sortOrder": 4,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -251,7 +251,7 @@
           {
             "id": "ded01969-b956-41a3-ba58-8561746dfd84",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/MTLHqx1JSyZ0.jpg",
-            "sortOrder": 3,
+            "sortOrder": 5,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -259,7 +259,7 @@
           {
             "id": "8aed9c62-0135-4bbe-9cc5-5f1543830cae",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/b2c3yJUXhKGW.jpg",
-            "sortOrder": 4,
+            "sortOrder": 6,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -267,7 +267,7 @@
           {
             "id": "43e8e9da-2038-49ea-a6f0-c06a6a916bad",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/r4aoqupkTtd6.jpg",
-            "sortOrder": 5,
+            "sortOrder": 7,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -275,7 +275,7 @@
           {
             "id": "388c73bb-0a6a-4ed0-ac58-ce2826d5d50a",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/SDJYE2m4tX3H.jpg",
-            "sortOrder": 6,
+            "sortOrder": 8,
             "description": "",
             "isSelected": true,
             "blockId": null
@@ -283,7 +283,7 @@
           {
             "id": "957e7600-4638-4e43-84f0-78103ab8f7b4",
             "url": "https://bookingplay-media.s3.amazonaws.com/item_images/2026/08/03/gCUGea8Q9bKq.jpg",
-            "sortOrder": 7,
+            "sortOrder": 9,
             "description": "",
             "isSelected": true,
             "blockId": null

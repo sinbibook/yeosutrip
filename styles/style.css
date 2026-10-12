@@ -373,58 +373,57 @@
 }
 
 /*** 하단 ***/
+/* pensionmaru.kr 푸터 — 흰 배경 + 위 테두리, 전부 가운데 정렬.
+   주소·업체명·대표자·사업자번호·개인정보처리방침을 inline 으로 한 줄에 흘린다. */
 .footer_wrap {
+  text-align: center;
   word-break: keep-all;
-  padding: 50px 0;
+  padding: 40px 0;
   position: relative;
   z-index: 2;
-  background: #262626;
+  background: #fff;
+  border-top: 1px solid #ddd;
 }
 .footer_wrap a {
   letter-spacing: -0.05em;
 }
 .footer_wrap .footer {
   overflow: hidden;
-  color: #fff;
+  text-align: center;
 }
 .footer_wrap .footer .tel {
+  font-size: 25px;
+  padding: 20px 0;
   font-weight: 400;
-  margin-bottom: 10px;
-  color: #fff;
-  font-size: 22px;
 }
 .footer_wrap .footer .address {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.66;
-  color: #fff;
+  opacity: 0.8;
+  color: #333;
 }
 .footer_wrap .footer .address p {
-  display: block;
-  color: inherit;
+  display: inline-block;
+  margin: 0 5px;
 }
 .footer_wrap .footer .address p:nth-of-type(1):before {
   display: none;
 }
+.footer_wrap .privacy {
+  display: inline-block;
+  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+}
 .footer_wrap .copy {
-  font-size: 14px;
+  text-align: center;
+  font-size: 13px;
   line-height: 1.66;
-  margin-top: 1em;
-  color: #adadad;
+  opacity: 0.8;
+  color: #333;
 }
 .footer_wrap .copy a {
-  color: inherit;
-  border: 1px solid #d0d0d0;
-  padding: 3px 10px;
-  display: flex;
-  max-width: 119px;
-  text-align: center;
-  box-sizing: border-box;
-  margin-bottom: 5px;
-}
-.footer_wrap .copy a:nth-child(2) {
-  border: none;
-  max-width: 336px;
-  padding: 0;
+  color: #333;
 }
 .footer_wrap .btn_top {
   cursor: pointer;
@@ -465,16 +464,13 @@
   .footer_wrap {
     padding: 0 0 30px;
   }
-  .footer_wrap .footer {
-    padding-top: 30px;
-  }
   .footer_wrap .footer .address p:nth-of-type(3):before {
     display: none;
   }
 }
 @media only screen and (max-width: 640px) {
   .footer_wrap .footer {
-    padding: 20px 15px 10px;
+    padding: 0 15px 10px;
   }
   .ft_kakao {
     bottom: 100px;
@@ -753,14 +749,10 @@
   width: 38.334%;
   position: absolute;
   right: 0;
-  /* top:50%+transform 은 박스 높이가 글자 수만큼 늘어나 이미지 높이(.img_box, 550px)와
-     어긋난다(원본도 같은 방식이라 텍스트가 조금만 길어도 똑같이 어긋난다).
-     .inner(position:relative)를 기준으로 top:0 + height:100% 로 이미지와 높이를
-     강제로 맞추고, 안쪽 내용은 flex 로 세로 중앙 정렬한다. */
-  top: 0;
-  height: 100%;
-  display: flex;
-  align-items: center;
+  /* 원본(pensionmaru.kr)과 같다. 박스 높이는 글 분량만큼만 잡고 이미지 세로 가운데에서
+     살짝 위(-53%)에 띄운다 — 이미지 위아래가 박스 밖으로 드러나는 게 원본 구도다. */
+  top: 50%;
+  transform: translateY(-53%);
   box-sizing: border-box;
   text-align: right;
   word-break: keep-all;
@@ -770,8 +762,6 @@
   opacity: 0.9;
 }
 .main_about .txt_box div {
-  width: 100%;
-  box-sizing: border-box;
   padding: 70px 50px;
 }
 .main_about .txt_box strong,
@@ -2492,6 +2482,89 @@
   margin-left: 8px;
 }
 
+/* ── 헤더 네이버·인스타그램 버튼 (템플릿 확장) ───────────────────
+   homepage.socialLinks.blog / .instagram 값이 있을 때만 매퍼가 노출한다(마크업 기본 숨김).
+   540px 이상: `.hd_right` 맨 앞 `[N][인스타] 예약하기 YBS ☰`.
+   - 예약하기의 특가 배지(`.res_ico`)가 왼쪽으로 10px 튀어나와 있어 묶음과 예약하기 사이를 18px 띄운다
+     (마크업 사이 공백 문자 약 4px + margin-right 14px — 배지와 9px 떨어진다).
+   - 투명한 `.btn_toggle` 이 로고 오른쪽 헤더 전체를 덮으므로 `position:relative; z-index:1`
+     을 줘야 클릭된다(예약하기와 같은 처리).
+   - 크기는 예약하기(41/38/36px 높이)·☰(40/35/30px)보다 한 단계 작게 32 / 30 / 26px.
+     인스타 로고는 122x126 이라 높이만 고정하고 폭은 비율대로 둔다.
+   - `.header *{transition:all .5s}` 가 걸리므로 폭·여백이 애니메이션되지 않게 끈다. */
+.header .hd_sns {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  z-index: 1;
+  margin-right: 14px;
+  font-size: 0;
+  line-height: 0;
+}
+.header .hd_sns,
+.header .hd_sns * {
+  transition: none;
+}
+.header .hd_sns a {
+  display: inline-block;
+  vertical-align: middle;
+}
+.header .hd_sns a + a {
+  margin-left: 8px;
+}
+.header .hd_sns img {
+  display: block;
+  width: auto;
+  height: 32px;
+}
+
+/* aside 맨 아래 — 539px 이하에서만 보인다 (아래 미디어쿼리) */
+.aside .aside_sns {
+  display: none;
+}
+
+@media only screen and (max-width: 1023px) {
+  .header .hd_sns img {
+    height: 30px;
+  }
+}
+@media only screen and (max-width: 860px) {
+  .header .hd_sns a + a {
+    margin-left: 6px;
+  }
+  .header .hd_sns img {
+    height: 26px;
+  }
+}
+
+/* 539px 이하: 헤더 줄에 자리가 없다(YBS 가 꺼진 사이트도 헤더가 60→108px 두 줄로 늘어난다).
+   헤더에서는 숨기고 aside 맨 아래(LOCATION 아래 구분선 + 30px 아이콘)에 보인다. */
+@media only screen and (max-width: 539px) {
+  .header .hd_sns {
+    display: none;
+  }
+  .aside .aside_sns {
+    display: block;
+    margin-top: 10px;
+    padding-top: 20px;
+    border-top: 1px solid rgb(255 255 255 / 15%);
+    font-size: 0;
+    line-height: 0;
+  }
+  .aside .aside_sns a {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  .aside .aside_sns a + a {
+    margin-left: 10px;
+  }
+  .aside .aside_sns img {
+    display: block;
+    width: auto;
+    height: 30px;
+  }
+}
+
 /* ── 서브메뉴 항목 한 줄 말줄임 (템플릿 확장) ────────────────────
    객실명/시설명은 백오피스 입력값이라 길이가 제각각이다
    ("대금산진달래축제(오션뷰,애견동반)" 처럼 길게 오면 두 줄로 접혀 메뉴가 들쭉날쭉해진다).
@@ -2540,8 +2613,8 @@
 /* ── 푸터 매핑 슬롯 색상 (원본 버그 보정, 템플릿 확장) ────────────
    `reset.css` 가 `span` 에 `color:#333` 을 **직접** 박아 둬서 상속이 끊긴다.
    원본 푸터는 값이 전부 텍스트 노드라 문제가 없었지만, 템플릿은 매핑 슬롯을
-   `<span data-footer-*>` 로 두기 때문에 어두운 푸터 위에 `#333` 글자가 되어
-   전화번호·업체명·대표자·사업자번호가 배경에 묻힌다. 부모 색을 되살린다. */
+   `<span data-footer-*>` 로 두기 때문에 슬롯만 `#333` 로 고정돼 부모 색을 따라가지 못한다
+   (예전 어두운 푸터에서는 전화번호·업체명 등이 배경에 묻혔다). 부모 색을 되살린다. */
 .footer_wrap .footer span {
   color: inherit;
 }
@@ -2612,10 +2685,14 @@
 
 /* ── 메인 객실 카드 썸네일 비율 고정 (템플릿 확장) ────────────────
    원본은 업체가 올린 사진 비율이 일정해 `img{width:100%}` 로 충분했다.
-   백오피스 썸네일은 비율이 제각각이라 카드마다 높이가 달라지므로 4:3 으로 잘라 맞춘다. */
+   백오피스 썸네일은 비율이 제각각이라 카드마다 높이가 달라지므로 4:3 으로 잘라 맞춘다.
+   원본 479px 이하 규칙(`.img{height:280px}` + `img{transform:translate(-50%,-50%)}`)이
+   남아 있으면 padding-bottom 에 280px 이 더해지고 이미지가 좌상단으로 반 칸 밀려
+   오른쪽 아래 1/4 만 보인다. 그 두 값을 여기서 끊는다. */
 .room_list .swiper-slide .img {
   position: relative;
   overflow: hidden;
+  height: auto;
   padding-bottom: 75%;
 }
 .room_list .swiper-slide .img img {
@@ -2625,6 +2702,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transform: none;
 }
 
 /* ── 특장점 카드 이미지 비율 (템플릿 확장) ──────────────────────
@@ -2672,23 +2750,6 @@
   opacity: 1;
 }
 
-/* ── 특장점 카드 (템플릿 확장) ────────────────────────────────── */
-
-/* 시설 설명은 길이가 제각각이다(한 줄짜리부터 두 문장짜리까지).
-   그대로 두면 카드마다 `.txt_box` 높이가 달라 세 칸이 어긋나므로 두 줄로 자른다.
-   작성자가 넣은 줄바꿈(nl2br)도 이 두 줄 안에서 지켜진다. */
-.main_special .txt_box p {
-  display: -webkit-box;
-  overflow: hidden;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-}
-
-/* `:before` 의 '-' 는 -webkit-box 안에서 첫 줄에만 붙어야 한다 */
-.main_special .txt_box p::before {
-  margin-right: 5px;
-}
-
 /* ── 이미지 배너: 사진이 한 장일 때 (템플릿 확장) ─────────────────
    원본 배너는 사진 두 장(세로 + 가로)을 좌우로 흘려 배치하는 구조라
    `.img01` 에 float 과 40~50% 폭이 걸려 있다.
@@ -2732,7 +2793,7 @@
    원본은 `font-weight:300`(light) 이다. reset.css 가 `strong` 의 브라우저 기본
    굵게를 지우고, style.css 가 300 을 명시하는 2단 구성이라 의도된 값이다.
 
-   다만 원본은 객실 카드를 PC 2열로 두고도 4실뿐이라 카드가 그리 크지 않았다.
+   다만 원본(playbeach)은 객실 카드를 PC 2열로 두고도 4실뿐이라 카드가 그리 크지 않았다.
    템플릿은 객실 수가 열려 있어 같은 2열에서도 카드가 더 커지는데,
    그 크기에서 22px light 는 배경 대비가 흐려 객실명이 눌린다. 한 단계만 올린다.
    (700 까지 올리면 그 아래 구조 설명(15px #999)과의 위계가 과해진다) */
